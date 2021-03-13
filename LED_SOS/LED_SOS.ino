@@ -19,10 +19,10 @@ void loop() {
 
   for (int i = 0; i < 3; i++)
   {
-    digitalWrite(7, HIGH);
-  delay(700);
+  digitalWrite(7, HIGH);
+  delay(600);
   digitalWrite(7, LOW);
-  delay(700);
+  delay(600);
   }
 
     for (int i = 0; i < 3; i++)
@@ -32,4 +32,6 @@ void loop() {
   digitalWrite(4, LOW);
   delay(200);
   }
+
+  delay(400);
 }
