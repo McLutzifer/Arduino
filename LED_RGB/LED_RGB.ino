@@ -35,7 +35,7 @@ void loop() {
  
     analogWrite(RED, redValue);
     analogWrite(GREEN, greenValue);
-    delay(delayTime)
+    delay(delayTime);
   }
 
   redValue = 0;
@@ -61,6 +61,10 @@ void loop() {
   {
     blueValue --;
     redValue++;
+
+    analogWrite(BLUE, blueValue);
+    analogWrite(RED, redValue);
+    delay(delayTime);
   }
   
 }
