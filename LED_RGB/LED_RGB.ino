@@ -42,5 +42,16 @@ void loop() {
   greenValue = 255;
   blueValue = 0;
 
-  for (int i = 0
+  for (int i = 0; i < 255; i++) 
+  {
+    greenValue--;
+    blueValue++;
+    delay(delayTime);
+  }
+
+  redValue = 0;
+  greenValue = 0;
+  blueValue = 255;
+
+  
 }
