@@ -1,11 +1,9 @@
-#include <HCSR04.h>
-
 //www.elegoo.com
 //2016.12.08
-//#include "SR04.h"
+#include "SR04.h"
 #define TRIG_PIN 12
 #define ECHO_PIN 11
-HCSR04 hcsr04 = SR04(ECHO_PIN,TRIG_PIN);
+SR04 sr04 = SR04(ECHO_PIN,TRIG_PIN);
 long a;
 
 void setup() {
@@ -14,7 +12,7 @@ void setup() {
 }
 
 void loop() {
-   a=hcsr04.Distance();
+   a=sr04.Distance();
    Serial.print(a);
    Serial.println("cm");
    delay(1000);
