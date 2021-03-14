@@ -47,11 +47,20 @@ void loop() {
     greenValue--;
     blueValue++;
     delay(delayTime);
+
+    analogWrite(GREEN, greenValue);
+    analogWrite(BLUE, blueValue);
+    delay(delayTime);
   }
 
   redValue = 0;
   greenValue = 0;
   blueValue = 255;
 
+  for (int i = 0; i < 255; i++)
+  {
+    blueValue --;
+    redValue++;
+  }
   
 }
