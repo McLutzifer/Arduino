@@ -1,6 +1,8 @@
+#include <LiquidCrystal.h>
 
 #include <Servo.h>
-#include <LiquidCrystal.h>
+
+
 
 
 //www.elegoo.com
@@ -22,13 +24,39 @@ void updateShiftRegister()
 
 void setup() 
 {
+
+    // set the cursor to column 0, line 1
+  // (note: line 1 is the second row, since counting begins with 0):
+  lcd.setCursor(0, 1);
+  // print the number of seconds since reset:
+  lcd.print(millis() / 1000);
+
+  
   pinMode(latchPin, OUTPUT);
   pinMode(dataPin, OUTPUT);  
   pinMode(clockPin, OUTPUT);
+
+    myservo.attach(13);
+  myservo.write(90);// move servos to center position -> 90°
+
+    // set up the LCD's number of columns and rows:
+  lcd.begin(16, 2);
+  // Print a message to the LCD.
+  lcd.print("Insert Code");
 }
 
 void loop() 
 {
+    myservo.write(90);// move servos to center position -> 90°
+  delay(500);
+  myservo.write(30);// move servos to center position -> 60°
+  delay(500);
+  myservo.write(90);// move servos to center position -> 90°
+  delay(500);
+  myservo.write(150);// move servos to center position -> 120°
+  delay(500);
+
+
   leds = 0;
   updateShiftRegister();
   delay(tDelay);
@@ -48,22 +76,14 @@ void loop()
 SERVO
 //www.elegoo.com
 //2018.12.19
-#include <Servo.h>
+
 Servo myservo;
 
 void setup(){
-  myservo.attach(5);
-  myservo.write(90);// move servos to center position -> 90°
+
 } 
 void loop(){
-  myservo.write(90);// move servos to center position -> 90°
-  delay(500);
-  myservo.write(30);// move servos to center position -> 60°
-  delay(500);
-  myservo.write(90);// move servos to center position -> 90°
-  delay(500);
-  myservo.write(150);// move servos to center position -> 120°
-  delay(500);
+
 }
 */
 
@@ -121,17 +141,10 @@ void loop(){
 LiquidCrystal lcd(7, 8, 9, 10, 11, 12);
 
 void setup() {
-  // set up the LCD's number of columns and rows:
-  lcd.begin(16, 2);
-  // Print a message to the LCD.
-  lcd.print("Hello, CPP");
+
 }
 
 void loop() {
-  // set the cursor to column 0, line 1
-  // (note: line 1 is the second row, since counting begins with 0):
-  lcd.setCursor(0, 1);
-  // print the number of seconds since reset:
-  lcd.print(millis() / 1000);
+
 }
 */
