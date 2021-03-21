@@ -15,6 +15,9 @@ int dataPin = 5;     // (12) DS [S1] on 74HC595
 
 byte leds = 0;
 
+LiquidCrystal lcd(7, 8, 9, 10, 11, 12);
+
+
 void updateShiftRegister()
 {
    digitalWrite(latchPin, LOW);
