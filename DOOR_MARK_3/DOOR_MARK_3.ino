@@ -69,6 +69,8 @@ void setup()
 void loop() 
 {
 
+    lcd.print("Please Identify");
+
 digitalWrite(14, LOW);
 digitalWrite(15, LOW);
 digitalWrite(16, LOW);
@@ -91,7 +93,12 @@ if (x > 6)
   myservo.write(90);// move servos to center position -> 90°
   delay(500);
   myservo.write(30);// move servos to center position -> 60°
+      lcd.clear();
+    lcd.print("Welcome!");
+ 
   delay(1500);
+  
+    lcd.clear();
   myservo.write(90);// move servos to center position -> 90°
   delay(500);
   myservo.write(150);// move servos to center position -> 120°
@@ -103,12 +110,11 @@ leds = 0;
     ledlightUP(i);
   }
 
-    lcd.clear();
-    lcd.print("Welcome!");
-    delay(1000);
-    lcd.clear();
+
   
 } //end if
+
+
 
 } // end loop
 
