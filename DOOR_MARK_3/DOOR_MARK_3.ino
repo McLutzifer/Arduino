@@ -24,12 +24,9 @@ LiquidCrystal lcd(3, 4, 5, 6, 7, 8);
 
 // PROTOTYPES //////////////////////////////////////
 void updateShiftRegister();
-void ledlight(int);
-void ledlightUP(int);
 void updateShiftRegisterUP();
-
-
-
+void ledlight(int );
+void ledlightUP(int );
 
 
 /////////// SETUP /////////////////////////////////
