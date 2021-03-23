@@ -1,8 +1,5 @@
 #include <LiquidCrystal.h>
 
-#include <Servo.h>
-Servo myservo;
-
 
 
 //www.elegoo.com
@@ -39,8 +36,7 @@ void setup()
   pinMode(dataPin, OUTPUT);  
   pinMode(clockPin, OUTPUT);
 
-    myservo.attach(13);
-  myservo.write(90);// move servos to center position -> 90°
+
 
     // set up the LCD's number of columns and rows:
   lcd.begin(8, 2);
