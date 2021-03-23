@@ -38,6 +38,13 @@ void setup()
   pinMode(latchPin, OUTPUT);
   pinMode(dataPin, OUTPUT);  
   pinMode(clockPin, OUTPUT);
+
+// starting with lghts OFF
+   digitalWrite(latchPin, HIGH);
+   shiftOut(dataPin, clockPin, LSBFIRST, leds);
+   digitalWrite(latchPin, LOW);
+  
+
   
   	/* LCD Display */
    // set the cursor to column 0, line 1
@@ -62,12 +69,22 @@ void setup()
 void loop() 
 {
 
+digitalWrite(14, LOW);
+digitalWrite(15, LOW);
+digitalWrite(16, LOW);
+
+int x = 8;
+
+if (x < 6)
+{
+
   // DOOR OPENNG PROCESS
   leds = 0;
   updateShiftRegister();
   delay(tDelay);
 
-  for (int i = 8; i >= 0; i--) {
+  
+  for (int i = 8; i >= 0; i--) {  //lights yellow to green up
     ledlight(i);
   }
 
@@ -80,13 +97,18 @@ void loop()
   myservo.write(150);// move servos to center position -> 120°
   delay(500);
 
-  for (int i = 8; i >= 0; i--) {
+leds = 0;
+
+ for (int i = 0; i <= 8; i++) {   //lights green to yellow down
     ledlightUP(i);
   }
+
+
+    lcd.print("Welcome!");
   
-}
+} //end if
 
-
+} // end loop
 
 
 
