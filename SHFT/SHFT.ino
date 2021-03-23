@@ -31,4 +31,17 @@ void writereg()
 void loop() {
   // put your main code here, to run repeatedly:
 
+  for (int i = 0; i <9; i++)
+  {
+    registers[i] = HIGH;
+    delay(100);
+    writereg();
+  }
+  for (int i = 8; i > 0; i++)
+  {
+    registers[i] = LOW;
+    delay(100);
+    writereg();
+  }
+
 }
