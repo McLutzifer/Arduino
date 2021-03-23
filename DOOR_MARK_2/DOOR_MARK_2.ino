@@ -1,5 +1,9 @@
 #include <LiquidCrystal.h>
 
+#include <MFRC522.h>
+#include <MFRC522Extended.h>
+#include <require_cpp11.h>
+#include <deprecated.h>
 
 
 //www.elegoo.com
