@@ -1,5 +1,9 @@
 // INCLUDES //////////////////////////
 #include <LiquidCrystal.h>
+#include <Servo.h>
+
+// DEF for Servo
+Servo myservo;
 
 // DEF for LED chain
 
@@ -45,6 +49,10 @@ void setup()
   lcd.begin(8, 2);
   // Print a message to the LCD.
   lcd.print("Please Identify");
+
+    /*Servo*/
+  myservo.attach(5);
+  myservo.write(90);// move servos to center position -> 90°
 }
 
 
@@ -61,7 +69,18 @@ void loop()
   for (int i = 8; i > 0; i--) {
     ledlight(i);
   }
+
+  myservo.write(90);// move servos to center position -> 90°
+  delay(500);
+  myservo.write(30);// move servos to center position -> 60°
+  delay(500);
+  myservo.write(90);// move servos to center position -> 90°
+  delay(500);
+  myservo.write(150);// move servos to center position -> 120°
+  delay(500);
 }
+
+
 
 
 
@@ -80,5 +99,3 @@ void ledlight(int port)
     updateShiftRegister();
     delay(tDelay);
 }
-
-
