@@ -2,6 +2,8 @@ int DS_pin = 16;
 int STCP_pin = 15;
 int SHCP_pin = 14;
 
+//better     #define STCP_pin 9
+
 void setup() {
   // put your setup code here, to run once:
   pinMode(DS_pin, OUTPUT);
@@ -11,7 +13,7 @@ void setup() {
 
 }
 
-boolean registers(8);
+boolean registers[8];
 
 void writereg()
 {
@@ -20,7 +22,7 @@ void writereg()
   for (int i = 7; i >= 0; i--)
   {
     digitalWrite(STCP_pin,LOW);
-    digitalWrite(DS_pin, registers(i));
+    digitalWrite(DS_pin, registers[i]);
     digitalWrite(STCP_pin, HIGH);
   }
   digitalWrite(SHCP_pin, HIGH);
