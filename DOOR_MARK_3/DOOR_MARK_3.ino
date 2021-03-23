@@ -14,6 +14,7 @@ byte leds = 0;
 
 // DEF for LCD Display
 
+LiquidCrystal lcd(3, 4, 5, 6, 7, 8);
 
 
 
@@ -34,6 +35,16 @@ void setup()
   pinMode(latchPin, OUTPUT);
   pinMode(dataPin, OUTPUT);  
   pinMode(clockPin, OUTPUT);
+  
+  	/* LCD Display */
+   // set the cursor to column 0, line 1
+  lcd.setCursor(0, 1);
+  // print the number of seconds since reset:
+  lcd.print(millis() / 1000);
+  // set up the LCD's number of columns and rows:
+  lcd.begin(8, 2);
+  // Print a message to the LCD.
+  lcd.print("Please Identify");
 }
 
 
