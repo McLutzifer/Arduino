@@ -6,15 +6,26 @@
 #include <MFRC522.h>  // Library for Mifare RC522 Devices
 
 
+#include <LiquidCrystal.h>
+#include <Servo.h>
+
+// DEF for Servo
+Servo myservo;
 
 
 
+////////////////CARDREADER//////////////
 #define RST_PIN         9          // Configurable, see typical pin layout above
 #define SS_PIN          10         // Configurable, see typical pin layout above
 
+///////////LEDS////////////////////////
 #define DS_pin 16
 #define STCP_pin 15
 #define SHCP_pin 14
+
+
+// DEF for LCD Display //////////////////////////////
+LiquidCrystal lcd(3, 4, 5, 6, 7, 8);
 
 
 boolean registers[8];  //default value = false = 0
