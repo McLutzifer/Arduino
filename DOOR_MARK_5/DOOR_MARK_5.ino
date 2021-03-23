@@ -53,6 +53,23 @@ void setup() {
   pinMode(STCP_pin, OUTPUT);
   pinMode(SHCP_pin, OUTPUT);
   writeReg();
+
+
+/////////////////////////////////////
+    
+    /* LCD Display */
+   // set the cursor to column 0, line 1
+  lcd.setCursor(0, 1);
+  // print the number of seconds since reset:
+  lcd.print(millis() / 1000);
+  // set up the LCD's number of columns and rows:
+  lcd.begin(8, 2);
+  // Print a message to the LCD.
+  lcd.print("Please Identify");
+
+    /*Servo*/
+  myservo.attach(2);
+  myservo.write(90);// move servos to center position -> 90°
  
 
 }
@@ -95,6 +112,23 @@ void loop() {
     delay(delayTime);
     writeReg();
   }
+
+////////////////////////////////////
+  myservo.write(90);// move servos to center position -> 90°
+  delay(500);
+  myservo.write(30);// move servos to center position -> 60°
+      lcd.clear();
+    lcd.print("Welcome!");
+ 
+  delay(1500);
+  
+    lcd.clear();
+  myservo.write(90);// move servos to center position -> 90°
+  delay(500);
+  myservo.write(150);// move servos to center position -> 120°
+  delay(500);
+//////////////////////////////
+  
   for (int i = 7; i >= 0; i--)
   {
     registers[i] = LOW;
