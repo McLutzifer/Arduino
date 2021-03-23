@@ -77,7 +77,7 @@
   to use common cathode led or just seperate leds, simply comment out #define COMMON_ANODE,
 */
 
-#define COMMON_ANODE
+//#define COMMON_ANODE
 
 #ifdef COMMON_ANODE
 #define LED_ON LOW
@@ -87,12 +87,33 @@
 #define LED_OFF LOW
 #endif
 
-#define redLed 7    // Set Led Pins
+#define redLed bitSet(leds, 3)
+    // Set Led Pins
 #define greenLed 6
 #define blueLed 5
 
 #define relay 4     // Set Relay Pin
 #define wipeB 3     // Button pin for WipeMode
+
+
+
+
+// DEF for LED chain
+
+int tDelay = 100;
+int latchPin = 15;      // (11) ST_CP [RCK] on 74HC595
+int clockPin = 14;      // (9) SH_CP [SCK] on 74HC595
+int dataPin = 16;     // (12) DS [S1] on 74HC595
+
+byte leds = 0;
+
+
+
+
+
+
+// /////// How long door should stay open  ------ 10 sec
+int lockDelay = 100000;
 
 bool programMode = false;  // initialize programming mode to false
 
@@ -269,7 +290,7 @@ void loop () {
     else {
       if ( findID(readCard) ) { // If not, see if the card is in the EEPROM
         Serial.println(F("Welcome, You shall pass"));
-        granted(300);         // Open the door lock for 300 ms
+        granted(lockDelay);         // Open the door lock for 300 ms
       }
       else {      // If not, show that the ID was not valid
         Serial.println(F("You shall not pass"));
@@ -464,20 +485,22 @@ bool findID( byte find[] ) {
 ///////////////////////////////////////// Write Success to EEPROM   ///////////////////////////////////
 // Flashes the green LED 3 times to indicate a successful write to EEPROM
 void successWrite() {
-  digitalWrite(blueLed, LED_OFF);   // Make sure blue LED is off
-  digitalWrite(redLed, LED_OFF);  // Make sure red LED is off
-  digitalWrite(greenLed, LED_OFF);  // Make sure green LED is on
-  delay(200);
-  digitalWrite(greenLed, LED_ON);   // Make sure green LED is on
-  delay(200);
-  digitalWrite(greenLed, LED_OFF);  // Make sure green LED is off
-  delay(200);
-  digitalWrite(greenLed, LED_ON);   // Make sure green LED is on
-  delay(200);
-  digitalWrite(greenLed, LED_OFF);  // Make sure green LED is off
-  delay(200);
-  digitalWrite(greenLed, LED_ON);   // Make sure green LED is on
-  delay(200);
+    for (int i = 8; i >= 0; i--) {  //lights yellow to green up
+    ledlight(i);
+  }
+}
+
+void updateShiftRegister()
+{
+   digitalWrite(latchPin, LOW);
+   shiftOut(dataPin, clockPin, LSBFIRST, leds);
+   digitalWrite(latchPin, HIGH);
+}
+void ledlight(int port) 
+{
+    bitSet(leds, port);
+    updateShiftRegister();
+    delay(tDelay);
 }
 
 ///////////////////////////////////////// Write Failed to EEPROM   ///////////////////////////////////
