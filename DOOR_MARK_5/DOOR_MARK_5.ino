@@ -91,6 +91,9 @@ void writeReg()
 
 
 void loop() {
+
+
+  
 	// Reset the loop if no new card present on the sensor/reader. This saves the entire process when idle.
 	if ( ! mfrc522.PICC_IsNewCardPresent()) {
 		return;
@@ -127,6 +130,8 @@ void loop() {
   delay(500);
   myservo.write(150);// move servos to center position -> 120°
   delay(500);
+
+  lcd.write("Please identify");
 //////////////////////////////
   
   for (int i = 7; i >= 0; i--)
