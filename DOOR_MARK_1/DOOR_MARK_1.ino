@@ -15,7 +15,7 @@ int dataPin = 5;     // (12) DS [S1] on 74HC595
 
 byte leds = 0;
 
-LiquidCrystal lcd(7, 8, 9, 10, 11, 12);
+LiquidCrystal lcd(3, 4, 5, 6, 7, 8);
 
 
 void updateShiftRegister()
@@ -43,7 +43,7 @@ void setup()
   myservo.write(90);// move servos to center position -> 90°
 
     // set up the LCD's number of columns and rows:
-  lcd.begin(16, 2);
+  lcd.begin(8, 2);
   // Print a message to the LCD.
   lcd.print("Insert Code");
 }
