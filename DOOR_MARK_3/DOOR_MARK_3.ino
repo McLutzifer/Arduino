@@ -1,5 +1,5 @@
-
-
+// INCLUDES //////////////////////////
+#include <LiquidCrystal.h>
 
 // DEF for LED chain
 
@@ -9,6 +9,12 @@ int clockPin = 14;      // (9) SH_CP [SCK] on 74HC595
 int dataPin = 16;     // (12) DS [S1] on 74HC595
 
 byte leds = 0;
+
+
+
+// DEF for LCD Display
+
+
 
 
 // PROTOTYPES //////////////////////////////////////
