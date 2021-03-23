@@ -50,25 +50,7 @@ void setup()
 
 void loop() 
 {
-    myservo.write(90);// move servos to center position -> 90°
-  delay(500);
-  myservo.write(30);// move servos to center position -> 60°
-  delay(500);
-  myservo.write(90);// move servos to center position -> 90°
-  delay(500);
-  myservo.write(150);// move servos to center position -> 120°
-  delay(500);
 
-
-  leds = 0;
-  updateShiftRegister();
-  delay(tDelay);
-  for (int i = 0; i < 8; i++)
-  {
-    bitSet(leds, i);
-    updateShiftRegister();
-    delay(tDelay);
-  }
 }
 
 
