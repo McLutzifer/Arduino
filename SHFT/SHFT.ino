@@ -11,7 +11,7 @@ void setup() {
 
 }
 
-boolean regsters(8);
+boolean registers(8);
 
 void writereg()
 {
@@ -23,6 +23,7 @@ void writereg()
     digitalWrite(DS_pin, registers(i));
     digitalWrite(STCP_pin, HIGH);
   }
+  digitalWrite(SHCP_pin, HIGH);
 }
 
 void loop() {
