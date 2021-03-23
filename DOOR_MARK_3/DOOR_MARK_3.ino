@@ -75,7 +75,7 @@ digitalWrite(16, LOW);
 
 int x = 8;
 
-if (x < 6)
+if (x > 6)
 {
 
   // DOOR OPENNG PROCESS
@@ -103,8 +103,10 @@ leds = 0;
     ledlightUP(i);
   }
 
-
+    lcd.clear();
     lcd.print("Welcome!");
+    delay(1000);
+    lcd.clear();
   
 } //end if
 
