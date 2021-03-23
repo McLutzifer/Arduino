@@ -4,11 +4,12 @@ int SHCP_pin = 14;
 
 //better     #define STCP_pin 9
 
-void setup() {
-  // put your setup code here, to run once:
+void setup() 
+{
   pinMode(DS_pin, OUTPUT);
   pinMode(STCP_pin, OUTPUT);
-  pinMode(SHCP_pin, OUTPUT);writereg();
+  pinMode(SHCP_pin, OUTPUT);
+  writereg();
  
 
 }
@@ -28,16 +29,15 @@ void writereg()
   digitalWrite(SHCP_pin, HIGH);
 }
 
-void loop() {
-  // put your main code here, to run repeatedly:
-
+void loop() 
+{
   for (int i = 0; i <9; i++)
   {
     registers[i] = HIGH;
     delay(100);
     writereg();
   }
-  for (int i = 8; i > 0; i++)
+  for (int i = 8; i > 0; i--)
   {
     registers[i] = LOW;
     delay(100);
