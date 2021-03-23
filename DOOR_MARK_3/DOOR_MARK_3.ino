@@ -26,7 +26,7 @@ LiquidCrystal lcd(3, 4, 5, 6, 7, 8);
 void updateShiftRegister();
 void ledlight(int);
 void ledlightUP(int);
-void updateShidtRegisterUP();
+void updateShiftRegisterUP();
 
 
 
@@ -101,13 +101,13 @@ void updateShiftRegister()
    shiftOut(dataPin, clockPin, LSBFIRST, leds);
    digitalWrite(latchPin, HIGH);
 }
-
-void ledlightUP(int port) 
+void updateShiftRegisterUP()
 {
-    bitSet(leds, port);
-    updateShiftRegisterUP();
-    delay(tDelay);
+   digitalWrite(latchPin, HIGH);
+   shiftOut(dataPin, clockPin, LSBFIRST, leds);
+   digitalWrite(latchPin, LOW);
 }
+
 
 
 void ledlight(int port) 
@@ -116,10 +116,9 @@ void ledlight(int port)
     updateShiftRegister();
     delay(tDelay);
 }
-
-void updateShiftRegisterUP()
+void ledlightUP(int port) 
 {
-   digitalWrite(latchPin, HIGH);
-   shiftOut(dataPin, clockPin, LSBFIRST, leds);
-   digitalWrite(latchPin, LOW);
+    bitSet(leds, port);
+    updateShiftRegisterUP();
+    delay(tDelay);
 }
