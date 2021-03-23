@@ -25,6 +25,8 @@ LiquidCrystal lcd(3, 4, 5, 6, 7, 8);
 // PROTOTYPES //////////////////////////////////////
 void updateShiftRegister();
 void ledlight(int);
+void ledlightUP(int);
+void updateShidtRegisterUP();
 
 
 
@@ -51,7 +53,7 @@ void setup()
   lcd.print("Please Identify");
 
     /*Servo*/
-  myservo.attach(5);
+  myservo.attach(2);
   myservo.write(90);// move servos to center position -> 90°
 }
 
@@ -62,22 +64,29 @@ void setup()
 
 void loop() 
 {
+
+  // DOOR OPENNG PROCESS
   leds = 0;
   updateShiftRegister();
   delay(tDelay);
 
-  for (int i = 8; i > 0; i--) {
+  for (int i = 8; i >= 0; i--) {
     ledlight(i);
   }
 
   myservo.write(90);// move servos to center position -> 90°
   delay(500);
   myservo.write(30);// move servos to center position -> 60°
-  delay(500);
+  delay(1500);
   myservo.write(90);// move servos to center position -> 90°
   delay(500);
   myservo.write(150);// move servos to center position -> 120°
   delay(500);
+
+  for (int i = 8; i >= 0; i--) {
+    ledlightUP(i);
+  }
+  
 }
 
 
@@ -93,9 +102,24 @@ void updateShiftRegister()
    digitalWrite(latchPin, HIGH);
 }
 
+void ledlightUP(int port) 
+{
+    bitSet(leds, port);
+    updateShiftRegisterUP();
+    delay(tDelay);
+}
+
+
 void ledlight(int port) 
 {
     bitSet(leds, port);
     updateShiftRegister();
     delay(tDelay);
+}
+
+void updateShiftRegisterUP()
+{
+   digitalWrite(latchPin, HIGH);
+   shiftOut(dataPin, clockPin, LSBFIRST, leds);
+   digitalWrite(latchPin, LOW);
 }
