@@ -117,8 +117,8 @@ void loop() {
   }
 
 ////////////////////////////////////
-  myservo.write(90);// move servos to center position -> 90°
-  delay(500);
+  //myservo.write(90);// move servos to center position -> 90°
+  //delay(500);
   myservo.write(30);// move servos to center position -> 60°
       lcd.clear();
     lcd.print("Welcome!");
@@ -126,8 +126,8 @@ void loop() {
   delay(1500);
   
     lcd.clear();
-  myservo.write(90);// move servos to center position -> 90°
-  delay(500);
+  //myservo.write(90);// move servos to center position -> 90°
+  //delay(500);
   myservo.write(150);// move servos to center position -> 120°
   delay(500);
 
