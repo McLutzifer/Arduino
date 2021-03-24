@@ -17,7 +17,6 @@ byte leds = 0;
 
 
 // DEF for LCD Display
-
 LiquidCrystal lcd(3, 4, 5, 6, 7, 8);
 
 
