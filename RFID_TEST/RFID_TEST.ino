@@ -64,10 +64,7 @@ void loop() {
 
 
 
-    if (rfid.uid.uidByte[0] == lukas[0] || 
-    rfid.uid.uidByte[1] == lukas[1] || 
-    rfid.uid.uidByte[2] == lukas[2] || 
-    rfid.uid.uidByte[3] == lukas[3] ) {
+    if (rfid.uid.uidByte[0] == lukas[0] ) {
     Serial.println(F("SUCCESS"));
     }
 }
