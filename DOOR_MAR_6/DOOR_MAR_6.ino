@@ -38,9 +38,11 @@ byte masterCard[4];   // Stores master card's ID read from EEPROM
 
 uint8_t successRead;    // Variable integer to keep if we have Successful Read from Reader
 
+int lukas[4] = {108, 159, 69, 74};
+
 /////////////////////////////new end ///////////////////////
 
-byte lukas[4] = "6C 9F";
+//byte lukas[4] = "6C 9F";
 
 
 
@@ -50,7 +52,7 @@ void setup() {
   SPI.begin();      // Init SPI bus
   mfrc522.PCD_Init();   // Init MFRC522
   delay(4);       // Optional delay. Some board do need more time after init to be ready, see Readme
-  mfrc522.PCD_DumpVersionToSerial();  // Show details of PCD - MFRC522 Card Reader details
+  //mfrc522.PCD_DumpVersionToSerial();  // Show details of PCD - MFRC522 Card Reader details
   Serial.println(F("Scan PICC to see UID, SAK, type, and data blocks..."));
 
 
@@ -157,8 +159,33 @@ void loop() {
 
 
 
+///////////////////IDENTIFY
+void identify() {
+    if (mfrc522.PICC_IsNewCardPresent() && mfrc522.PICC_ReadCardSerial() ) {
+    Serial.print("Gelesene UID:");
+    for (byte i = 0; i < mfrc522.uid.size; i++) {
+      // Abstand zwischen HEX-Zahlen und führende Null bei Byte < 16
+      //Serial.print(mfrc522.uid.uidByte[i] < 0x10 ); //? " 0" : " ");
+      readCard[i] = mfrc522.uid.uidByte[i];
+      Serial.print(readCard[i], HEX);
+      //Serial.print(mfrc522.uid.uidByte[i], HEX);
+    } 
+    Serial.println(); 
 
+    for (int i = 0; i < 4; i++) {
+      Serial.println(readCard[i]);
+    }
 
+        if (readCard[0] == lukas[0] && 
+    readCard[1] == lukas[1] && 
+    readCard[2] == lukas[2]) {
+    Serial.println(F("SUCCESS"));
+    }
+ 
+    // Versetzt die gelesene Karte in einen Ruhemodus, um nach anderen Karten suchen zu können.
+    mfrc522.PICC_HaltA();
+    delay(1000);
+}
 
 
 
