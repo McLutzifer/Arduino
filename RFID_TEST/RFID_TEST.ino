@@ -45,7 +45,7 @@ void loop() {
   // PICC = proximity integrated circuit card = kontaktlose Chipkarte
 
 
-/*
+
   if (mfrc522.PICC_IsNewCardPresent() && mfrc522.PICC_ReadCardSerial() ) {
     Serial.print("Gelesene UID:");
     for (byte i = 0; i < mfrc522.uid.size; i++) {
@@ -55,8 +55,7 @@ void loop() {
     } 
     Serial.println(); 
 
-    */
-    
+
     if (mfrc522.uid.uidByte[0] == lukas[0] ) {
     Serial.println(F("SUCCESS"));
     }
@@ -67,11 +66,6 @@ void loop() {
   }  
 
 
-
-
-
-
-}
 
 
 
