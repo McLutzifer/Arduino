@@ -114,7 +114,8 @@ void loop() {
     registers[i] = HIGH;
     delay(delayTime);
     writeReg();
-  }
+  }  lcd.clear();
+  lcd.print("success");
 
 ////////////////////////////////////
   //myservo.write(90);// move servos to center position -> 90°
