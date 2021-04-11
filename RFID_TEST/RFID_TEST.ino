@@ -21,7 +21,7 @@
 #define Lukas "6C 9F 45 4A"
 
 
-byte readCard;
+byte readCard[4];
 char lukas[11] = "6C9F 45 4A";
 
  
