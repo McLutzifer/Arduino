@@ -42,6 +42,9 @@ byte masterCard[4];   // Stores master card's ID read from EEPROM
 uint8_t successRead;    // Variable integer to keep if we have Successful Read from Reader
 
 int lukas[4] = {108, 159, 69, 74};
+int coffee[4] = {126, 101, 145, 54};
+int phone[4] = {1, 2, 3, 4};
+int card[4] = {195, 76, 168, 20};
 
 /////////////////////////////new end ///////////////////////
 
@@ -58,42 +61,32 @@ void setup() {
   //mfrc522.PCD_DumpVersionToSerial();  // Show details of PCD - MFRC522 Card Reader details
   Serial.println(F("Scan PICC to see UID, SAK, type, and data blocks..."));
 
-
-
 //////////////////////////////////////////////////////
-
   pinMode(DS_pin, OUTPUT);
   pinMode(STCP_pin, OUTPUT);
   pinMode(SHCP_pin, OUTPUT);
   writeReg();
-
-
 /////////////////////////////////////
     
-    /* LCD Display */
-   // set the cursor to column 0, line 1
-  lcd.setCursor(0, 1);
-  // print the number of seconds since reset:
-  lcd.print(millis() / 1000);
-  // set up the LCD's number of columns and rows:
-  lcd.begin(8, 2);
-  // Print a message to the LCD.
-  lcd.print("Please Identify");
+  /* LCD Display */
+  lcd.setCursor(0, 1);    // set the cursor to column 0, line 1
+  lcd.print(millis() / 1000);    // print the number of seconds since reset:
+  lcd.begin(8, 2);    // set up the LCD's number of columns and rows:
+  lcd.print("Please Identify");    // Print a message to the LCD.
 
-    /*Servo*/
+  /*Servo*/
   myservo.attach(2);
   myservo.write(90);// move servos to center position -> 90°
  
 
-}
+}  // end setup
 
 
 void writeReg()
 {
   digitalWrite(STCP_pin,LOW);
 
-  for (int i = 7; i >= 0; i--)
-  {
+  for (int i = 7; i >= 0; i--) {
     digitalWrite(SHCP_pin,LOW);
     digitalWrite(DS_pin, registers[i]);
     digitalWrite(SHCP_pin, HIGH);
@@ -101,6 +94,39 @@ void writeReg()
   digitalWrite(STCP_pin, HIGH);
 }
 
+
+void success() {
+  for (int i = 0; i <8; i++) {
+    registers[i] = HIGH;
+    delay(delayTime);
+    writeReg();
+    }
+    //lcd.clear();
+    ////////////////////////////////////
+    //myservo.write(90);// move servos to center position -> 90°
+    //delay(500);
+    myservo.write(30);// move servos to center position -> 60°
+    lcd.clear();
+    lcd.print("Come in!");
+ 
+    delay(1500);
+  
+    lcd.clear();
+    //myservo.write(90);// move servos to center position -> 90°
+    //delay(500);
+    myservo.write(150);// move servos to center position -> 120°
+    delay(500);
+
+    lcd.write("Please identify");
+//////////////////////////////
+  
+  for (int i = 7; i >= 0; i--)
+  {
+    registers[i] = LOW;
+    delay(delayTime);
+    writeReg();
+  }
+}
 
 
 void loop() {
@@ -111,7 +137,7 @@ void loop() {
   // Dump debug info about the card; PICC_HaltA() is automatically called   //mfrc522.PICC_DumpToSerial(&(mfrc522.uid));
 /*    if ( EEPROM.read(0))  {        for (int i = 0; i <8; i++)   {      registers[i] = HIGH;   delay(delayTime);    writeReg();   }  */
 
-  lcd.write("Please identify");
+  //lcd.write("Please identify");
   //identify();
   if (mfrc522.PICC_IsNewCardPresent() && mfrc522.PICC_ReadCardSerial() ) {
       Serial.print("Gelesene UID:");
@@ -132,6 +158,9 @@ void loop() {
       readCard[1] == lukas[1] && 
       readCard[2] == lukas[2]) {
       Serial.println(F("SUCCESS"));
+      lcd.clear();
+      lcd.print("Welcome Lukas");
+      delay(1000);
       success();
       }
   
@@ -147,7 +176,7 @@ void loop() {
 
 
 
-
+/*
 
 ///////////////////IDENTIFY
 void identify() {
@@ -179,13 +208,11 @@ void identify() {
   }
 }
 
+*/
 
 
+/*
 
-void success() {
-  
-  lcd.write("success");
-}
 
 void fail() {
     ////////////////////////////////////
@@ -218,8 +245,4 @@ void fail() {
 
 
 
-
-
-
-
-
+*/
