@@ -41,17 +41,24 @@ void loop() {
       // Abstand zwischen HEX-Zahlen und führende Null bei Byte < 16
       Serial.print(mfrc522.uid.uidByte[i] < 0x10 ); //? " 0" : " ");
       Serial.print(mfrc522.uid.uidByte[i], HEX);
-
-      if (HEX == "6C") {
-        Serial.print("Success");
-      } else {
-        Serial.print("FAIL");
-      }
     } 
     Serial.println(); 
  
     // Versetzt die gelesene Karte in einen Ruhemodus, um nach anderen Karten suchen zu können.
     mfrc522.PICC_HaltA();
     delay(1000);
+  }
+}
+
+
+char myInts[11];
+
+
+int pushIntoArray(int array[], int size){
+  int index = 0;
+  int newArray[100];
+
+  for (int i= 0; i<= size; i++){
+    Serial.print(i);
   }
 }
