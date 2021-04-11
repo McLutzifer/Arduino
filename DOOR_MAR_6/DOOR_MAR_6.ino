@@ -1,3 +1,6 @@
+////////////////PROTOTYPES??? ////////////////
+void identify();
+
 
 
 //////////////////////////////////
@@ -103,6 +106,7 @@ void writeReg()
 void loop() {
 
 
+/*
   
   // Reset the loop if no new card present on the sensor/reader. This saves the entire process when idle.
   if ( ! mfrc522.PICC_IsNewCardPresent()) {
@@ -114,9 +118,12 @@ void loop() {
     return;
   }
 
+  */
+
   // Dump debug info about the card; PICC_HaltA() is automatically called
   //mfrc522.PICC_DumpToSerial(&(mfrc522.uid));
 
+/*
   if ( EEPROM.read(0))
   {
       for (int i = 0; i <8; i++)
@@ -125,6 +132,10 @@ void loop() {
     delay(delayTime);
     writeReg();
   }
+  */
+
+lcd.write("Please identify");
+  identify();
 
 ////////////////////////////////////
   //myservo.write(90);// move servos to center position -> 90°
@@ -152,7 +163,7 @@ void loop() {
   }
 
   }
-}
+
 
 
 
@@ -180,17 +191,26 @@ void identify() {
     readCard[1] == lukas[1] && 
     readCard[2] == lukas[2]) {
     Serial.println(F("SUCCESS"));
+    success();
     }
  
     // Versetzt die gelesene Karte in einen Ruhemodus, um nach anderen Karten suchen zu können.
     mfrc522.PICC_HaltA();
     delay(1000);
 }
+}
 
 
 
 
+void success() {
+  
+  lcd.write("success");
+}
 
+void fail() {
+  int fail = 0;
+}
 
 
 
@@ -200,7 +220,7 @@ void identify() {
 
 //////////////////////////////////...............new........///////////////
 ///////////////////////////////////////// Get PICC's UID ///////////////////////////////////
-uint8_t getID() {
+/*uint8_t getID() {
   // Getting ready for Reading PICCs
   if ( ! mfrc522.PICC_IsNewCardPresent()) { //If a new PICC placed to RFID reader continue
     return 0;
@@ -228,23 +248,23 @@ uint8_t getID() {
   return 1;
 }
 
-
+*/
 
 
 //////////////////////////////////////// Read an ID from EEPROM //////////////////////////////
-void readID( uint8_t number ) {
+/*void readID( uint8_t number ) {
   uint8_t start = (number * 4 ) + 2;    // Figure out starting position
   for ( uint8_t i = 0; i < 4; i++ ) {     // Loop 4 times to get the 4 Bytes
     storedCard[i] = EEPROM.read(start + i);   // Assign values read from EEPROM to array
   }
-}
+} */
 
 
 
 
 
 ///////////////////////////////////////// Find ID From EEPROM   ///////////////////////////////////
-bool findID( byte find[] ) {
+/*bool findID( byte find[] ) {
   uint8_t count = EEPROM.read(0);     // Read the first Byte of EEPROM that
   for ( uint8_t i = 1; i < count; i++ ) {    // Loop once for each EEPROM entry
     readID(i);          // Read an ID from EEPROM, it is stored in storedCard[4]
@@ -255,15 +275,15 @@ bool findID( byte find[] ) {
     }
   }
   return false;
-}
+} */
 
 
 ///////////////////////////////////////// Check Bytes   ///////////////////////////////////
-bool checkTwo ( byte a[], byte b[] ) {   
+/*bool checkTwo ( byte a[], byte b[] ) {   
   for ( uint8_t k = 0; k < 4; k++ ) {   // Loop 4 times
     if ( a[k] != b[k] ) {     // IF a != b then false, because: one fails, all fail
        return false;
     }
   }
   return true;  
-}
+} */
