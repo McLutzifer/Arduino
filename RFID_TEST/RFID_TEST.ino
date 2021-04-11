@@ -22,7 +22,9 @@
 
 
 byte readCard[4];
-char lukas[11] = "6C9F 45 4A";
+byte lukas[11] = "6C9F 45 4A";
+
+int lukas2[11] = {108, 159, 69, 74};
 
  
 MFRC522 mfrc522(SS_PIN, RST_PIN);   // Instanz des MFRC522 erzeugen
@@ -57,8 +59,13 @@ void loop() {
     } 
     Serial.println(); 
 
+    for (int i = 0; i < 4; i++) {
+      Serial.println(readCard[i]);
+    }
 
-    if (readCard[0] == lukas[0] ) {
+    if (readCard[0] == lukas2[0] && 
+    readCard[1] == lukas2[1] && 
+    readCard[2] == lukas2[2]) {
     Serial.println(F("SUCCESS"));
     }
  
