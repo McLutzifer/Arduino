@@ -26,12 +26,14 @@ char lukas[11] = "6C 9F 45 4A";
 
  
 MFRC522 mfrc522(SS_PIN, RST_PIN);   // Instanz des MFRC522 erzeugen
+MFRC522 rfid(SS_PIN, RST_PIN); // Instance of the class
+
  
 void setup() {
   // Diese Funktion wird einmalig beim Start ausgeführt
   Serial.begin(9600);  // Serielle Kommunikation mit dem PC initialisieren
   SPI.begin();         // Initialisiere SPI Kommunikation
-  mfrc522.PCD_Init();  // Initialisiere MFRC522 Lesemodul
+  //mfrc522.PCD_Init();  // Initialisiere MFRC522 Lesemodul
 
 
     rfid.PCD_Init(); // Init MFRC522 
