@@ -22,7 +22,7 @@
 
 
 
-char lukas[11] = "6C 9F 45 4A";
+char lukas[11] = "06C09F 45 4A";
 
  
 MFRC522 mfrc522(SS_PIN, RST_PIN);   // Instanz des MFRC522 erzeugen
