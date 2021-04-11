@@ -51,12 +51,14 @@ void loop() {
     for (byte i = 0; i < mfrc522.uid.size; i++) {
       // Abstand zwischen HEX-Zahlen und führende Null bei Byte < 16
       //Serial.print(mfrc522.uid.uidByte[i] < 0x10 ); //? " 0" : " ");
-      Serial.print(mfrc522.uid.uidByte[i], HEX);
+      readCard[i] = mfrc522.uid.uidByte[i];
+      Serial.print(readCard[i], HEX);
+      //Serial.print(mfrc522.uid.uidByte[i], HEX);
     } 
     Serial.println(); 
 
 
-    if (mfrc522.uid.uidByte[0] == lukas[0] ) {
+    if (readCard[0] == lukas[0] ) {
     Serial.println(F("SUCCESS"));
     }
  
