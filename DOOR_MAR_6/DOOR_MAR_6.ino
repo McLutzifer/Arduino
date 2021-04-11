@@ -40,6 +40,7 @@ uint8_t successRead;    // Variable integer to keep if we have Successful Read f
 
 /////////////////////////////new end ///////////////////////
 
+byte lukas[4] = "6C 9F";
 
 
 
