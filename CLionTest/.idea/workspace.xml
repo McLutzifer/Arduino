@@ -9,7 +9,14 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d42da093-eb01-4837-9fcf-0e96d1bee956" name="Default Changelist" comment="" />
+    <list default="true" id="d42da093-eb01-4837-9fcf-0e96d1bee956" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../board.fzz" beforeDir="false" afterPath="$PROJECT_DIR$/../board.fzz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../board_bb.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../board_bb.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../board_bb.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../board_bb.svg" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -41,11 +48,6 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -63,6 +65,7 @@
       <workItem from="1615738199271" duration="608000" />
       <workItem from="1615738819198" duration="186000" />
       <workItem from="1615739119703" duration="243000" />
+      <workItem from="1617550571671" duration="308000" />
     </task>
     <servers />
   </component>
