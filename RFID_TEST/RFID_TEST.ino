@@ -22,7 +22,7 @@
 
 
 
-char lukas[11] = "06C09F 45 4A";
+char lukas[11] = "6C9F 45 4A";
 
  
 MFRC522 mfrc522(SS_PIN, RST_PIN);   // Instanz des MFRC522 erzeugen
@@ -43,14 +43,19 @@ void loop() {
  
   // Nur wenn eine Karte gefunden wird und gelesen werden konnte, wird der Inhalt von IF ausgeführt
   // PICC = proximity integrated circuit card = kontaktlose Chipkarte
+
+
+/*
   if (mfrc522.PICC_IsNewCardPresent() && mfrc522.PICC_ReadCardSerial() ) {
     Serial.print("Gelesene UID:");
     for (byte i = 0; i < mfrc522.uid.size; i++) {
       // Abstand zwischen HEX-Zahlen und führende Null bei Byte < 16
-      Serial.print(mfrc522.uid.uidByte[i] < 0x10 ); //? " 0" : " ");
+      //Serial.print(mfrc522.uid.uidByte[i] < 0x10 ); //? " 0" : " ");
       Serial.print(mfrc522.uid.uidByte[i], HEX);
     } 
     Serial.println(); 
+
+    */
     
     if (mfrc522.uid.uidByte[0] == lukas[0] ) {
     Serial.println(F("SUCCESS"));
