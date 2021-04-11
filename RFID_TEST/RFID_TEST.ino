@@ -51,7 +51,7 @@ void loop() {
 }
 
 
-char myInts[11];
+char myInts[11] = "6C 9F";
 
 
 int pushIntoArray(int array[], int size){

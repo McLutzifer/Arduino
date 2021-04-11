@@ -187,6 +187,13 @@ uint8_t getID() {
   for ( uint8_t i = 0; i < 4; i++) {  //
     readCard[i] = mfrc522.uid.uidByte[i];
     Serial.print(readCard[i], HEX);
+
+    for (int j=0; j < 4; j++) {
+      if (readCard[i] != lukas[i]) {
+        break;
+      }
+      Serial.print("Hello lukas");
+    }
   }
   Serial.println("");
   mfrc522.PICC_HaltA(); // Stop reading
