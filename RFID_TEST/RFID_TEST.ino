@@ -51,6 +51,10 @@ void loop() {
       Serial.print(mfrc522.uid.uidByte[i], HEX);
     } 
     Serial.println(); 
+    
+    if (mfrc522.uid.uidByte[0] == lukas[0] ) {
+    Serial.println(F("SUCCESS"));
+    }
  
     // Versetzt die gelesene Karte in einen Ruhemodus, um nach anderen Karten suchen zu können.
     mfrc522.PICC_HaltA();
@@ -62,9 +66,6 @@ void loop() {
 
 
 
-    if (mfrc522.uid.uidByte[0] == lukas[0] ) {
-    Serial.println(F("SUCCESS"));
-    }
 }
 
 
