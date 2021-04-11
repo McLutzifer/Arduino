@@ -20,6 +20,10 @@
 #define SS_PIN    10    // SPI Slave Select Pin
 #define Lukas "6C 9F 45 4A"
 
+
+
+char lukas[11] = "6C 9F 45 4A";
+
  
 MFRC522 mfrc522(SS_PIN, RST_PIN);   // Instanz des MFRC522 erzeugen
  
@@ -28,6 +32,10 @@ void setup() {
   Serial.begin(9600);  // Serielle Kommunikation mit dem PC initialisieren
   SPI.begin();         // Initialisiere SPI Kommunikation
   mfrc522.PCD_Init();  // Initialisiere MFRC522 Lesemodul
+
+
+    rfid.PCD_Init(); // Init MFRC522 
+
 }
  
 void loop() {
@@ -47,11 +55,23 @@ void loop() {
     // Versetzt die gelesene Karte in einen Ruhemodus, um nach anderen Karten suchen zu können.
     mfrc522.PICC_HaltA();
     delay(1000);
-  }
+  }  
+
+
+
+
+
+
+    if (rfid.uid.uidByte[0] == lukas[0] || 
+    rfid.uid.uidByte[1] == lukas[1] || 
+    rfid.uid.uidByte[2] == lukas[2] || 
+    rfid.uid.uidByte[3] == lukas[3] ) {
+    Serial.println(F("SUCCESS"));
+    }
 }
 
 
-char myInts[11] = "6C 9F";
+
 
 
 int pushIntoArray(int array[], int size){
